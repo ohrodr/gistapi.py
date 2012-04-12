@@ -1,40 +1,14 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+from setuptools import setup, find_packages
+import sys, os
 
-import os
-import sys
+version = '0.3.0'
 
-from distutils.core import setup
-
-
-def publish():
-    """Publish to PyPi"""
-    os.system("python setup.py sdist upload")
-
-
-if sys.argv[-1] == "publish":
-    publish()
-    sys.exit()
-
-    
-required = ['requests']
-
-
-if sys.version_info[:2] < (2,6):
-    required.append('simplejson')
-
-
-setup(
-    name='gistapi',
-    version='0.2.4',
-    description='Python wrapper for Gist API',
-    long_description=open('README.rst').read() + '\n\n' + open('HISTORY.rst').read(),
-    author='Kenneth Reitz',
-    author_email='me@kennethreitz.com',
-    url='http://github.com/kennethreitz/gistapi.py',
-    packages=['gistapi'],
-    install_requires=required,
-    license='MIT',
+setup(name='gistapi',
+      version=version,
+      description="This is a python OO gist[hub] API module",
+      long_description="""\
+           This module was originally written by Kenneth Reitz.  This is a fork by Robb O'Driscoll.
+""",
     classifiers=(
         "Development Status :: 4 - Beta",
         "License :: OSI Approved :: MIT License",
@@ -43,4 +17,20 @@ setup(
         "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
     )
-)
+
+      keywords='',
+      author='Kenneth Reitz',
+      author_email='me@kennethreitz.com',
+      url='http://github.com/kennethreitz/gistapi.py',
+      license='MIT',
+      packages=find_packages(exclude=['ez_setup', 'examples', 'tests',]),
+      include_package_data=True,
+      zip_safe=False,
+      install_requires=[
+          'simplejson' 
+          # -*- Extra requirements: -*-
+      ],
+      entry_points="""
+      # -*- Entry points: -*-
+      """,
+      )
